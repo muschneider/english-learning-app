@@ -1,0 +1,1594 @@
+[
+  {
+    "day": 1,
+    "level": "A1",
+    "levelDescription": "Beginner",
+    "phase": "Grammar",
+    "title": "2.1 O Verbo TO BE (Presente Simples)",
+    "grammarTopics": [
+      0,
+      1,
+      2
+    ],
+    "vocabTopics": [
+      0
+    ],
+    "readingTexts": [],
+    "dialogues": [],
+    "exercises": [],
+    "isReview": false
+  },
+  {
+    "day": 2,
+    "level": "A1",
+    "levelDescription": "Beginner",
+    "phase": "Grammar",
+    "title": "2.4 Adjetivos Possessivos (Possessive Adjectives)",
+    "grammarTopics": [
+      3,
+      4,
+      5
+    ],
+    "vocabTopics": [],
+    "readingTexts": [],
+    "dialogues": [],
+    "exercises": [],
+    "isReview": false
+  },
+  {
+    "day": 3,
+    "level": "A1",
+    "levelDescription": "Beginner",
+    "phase": "Grammar",
+    "title": "2.7 Artigos (Articles): A, An, The",
+    "grammarTopics": [
+      6,
+      7,
+      8
+    ],
+    "vocabTopics": [
+      1
+    ],
+    "readingTexts": [],
+    "dialogues": [],
+    "exercises": [],
+    "isReview": false
+  },
+  {
+    "day": 4,
+    "level": "A1",
+    "levelDescription": "Beginner",
+    "phase": "Grammar",
+    "title": "2.10 Presente Contínuo (Present Continuous / Present Progressive)",
+    "grammarTopics": [
+      9,
+      10,
+      11
+    ],
+    "vocabTopics": [],
+    "readingTexts": [],
+    "dialogues": [],
+    "exercises": [],
+    "isReview": false
+  },
+  {
+    "day": 5,
+    "level": "A1",
+    "levelDescription": "Beginner",
+    "phase": "Grammar",
+    "title": "2.13 There is / There are (Existir / Haver)",
+    "grammarTopics": [
+      12,
+      13,
+      14
+    ],
+    "vocabTopics": [
+      2
+    ],
+    "readingTexts": [],
+    "dialogues": [],
+    "exercises": [],
+    "isReview": false
+  },
+  {
+    "day": 6,
+    "level": "A1",
+    "levelDescription": "Beginner",
+    "phase": "Grammar",
+    "title": "2.16 Palavras Interrogativas (Question Words / WH-Questions)",
+    "grammarTopics": [
+      15,
+      16,
+      17
+    ],
+    "vocabTopics": [],
+    "readingTexts": [],
+    "dialogues": [],
+    "exercises": [],
+    "isReview": false
+  },
+  {
+    "day": 7,
+    "level": "A1",
+    "levelDescription": "Beginner",
+    "phase": "Grammar",
+    "title": "2.19 Conjunções Básicas (Basic Conjunctions)",
+    "grammarTopics": [
+      18,
+      19,
+      20
+    ],
+    "vocabTopics": [
+      3
+    ],
+    "readingTexts": [],
+    "dialogues": [],
+    "exercises": [],
+    "isReview": false
+  },
+  {
+    "day": 8,
+    "level": "A1",
+    "levelDescription": "Beginner",
+    "phase": "Grammar",
+    "title": "2.22 O Verbo LIKE + Gerúndio / Infinitivo",
+    "grammarTopics": [
+      21,
+      22,
+      23
+    ],
+    "vocabTopics": [],
+    "readingTexts": [],
+    "dialogues": [],
+    "exercises": [],
+    "isReview": false
+  },
+  {
+    "day": 9,
+    "level": "A1",
+    "levelDescription": "Beginner",
+    "phase": "Grammar",
+    "title": "2.25 Passado Simples (Simple Past) — Introdução",
+    "grammarTopics": [
+      24
+    ],
+    "vocabTopics": [
+      4
+    ],
+    "readingTexts": [],
+    "dialogues": [],
+    "exercises": [],
+    "isReview": false
+  },
+  {
+    "day": 10,
+    "level": "A1",
+    "levelDescription": "Beginner",
+    "phase": "Vocabulary",
+    "title": "3.6 Cores (Colors)",
+    "grammarTopics": [],
+    "vocabTopics": [
+      5,
+      6,
+      7,
+      8,
+      9
+    ],
+    "readingTexts": [],
+    "dialogues": [],
+    "exercises": [],
+    "isReview": false
+  },
+  {
+    "day": 11,
+    "level": "A1",
+    "levelDescription": "Beginner",
+    "phase": "Vocabulary",
+    "title": "3.11 Animais (Animals)",
+    "grammarTopics": [],
+    "vocabTopics": [
+      10,
+      11,
+      12,
+      13,
+      14
+    ],
+    "readingTexts": [],
+    "dialogues": [],
+    "exercises": [],
+    "isReview": false
+  },
+  {
+    "day": 12,
+    "level": "A1",
+    "levelDescription": "Beginner",
+    "phase": "Vocabulary",
+    "title": "3.16 Phrasal Verbs para o Nível A1",
+    "grammarTopics": [],
+    "vocabTopics": [
+      15,
+      16,
+      17
+    ],
+    "readingTexts": [],
+    "dialogues": [],
+    "exercises": [],
+    "isReview": false
+  },
+  {
+    "day": 13,
+    "level": "A1",
+    "levelDescription": "Beginner",
+    "phase": "Vocabulary",
+    "title": "A1 Vocabulary Day 13",
+    "grammarTopics": [],
+    "vocabTopics": [],
+    "readingTexts": [],
+    "dialogues": [],
+    "exercises": [],
+    "isReview": false
+  },
+  {
+    "day": 14,
+    "level": "A1",
+    "levelDescription": "Beginner",
+    "phase": "Reading & Communication",
+    "title": "Text 1: My Daily Routine",
+    "grammarTopics": [],
+    "vocabTopics": [],
+    "readingTexts": [
+      0
+    ],
+    "dialogues": [
+      0
+    ],
+    "exercises": [],
+    "isReview": false
+  },
+  {
+    "day": 15,
+    "level": "A1",
+    "levelDescription": "Beginner",
+    "phase": "Reading & Communication",
+    "title": "Text 2: A New Student",
+    "grammarTopics": [],
+    "vocabTopics": [],
+    "readingTexts": [
+      1
+    ],
+    "dialogues": [
+      1
+    ],
+    "exercises": [],
+    "isReview": false
+  },
+  {
+    "day": 16,
+    "level": "A1",
+    "levelDescription": "Beginner",
+    "phase": "Reading & Communication",
+    "title": "Text 3: The Silva Family",
+    "grammarTopics": [],
+    "vocabTopics": [],
+    "readingTexts": [
+      2
+    ],
+    "dialogues": [
+      2
+    ],
+    "exercises": [],
+    "isReview": false
+  },
+  {
+    "day": 17,
+    "level": "A1",
+    "levelDescription": "Beginner",
+    "phase": "Reading & Communication",
+    "title": "A1 Reading Day 17",
+    "grammarTopics": [],
+    "vocabTopics": [],
+    "readingTexts": [],
+    "dialogues": [
+      3
+    ],
+    "exercises": [],
+    "isReview": false
+  },
+  {
+    "day": 18,
+    "level": "A1",
+    "levelDescription": "Beginner",
+    "phase": "Practice & Review",
+    "title": "Practice & Review — A1",
+    "grammarTopics": [],
+    "vocabTopics": [],
+    "readingTexts": [],
+    "dialogues": [],
+    "exercises": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+    ],
+    "isReview": true
+  },
+  {
+    "day": 19,
+    "level": "A1",
+    "levelDescription": "Beginner",
+    "phase": "Practice & Review",
+    "title": "Practice & Review — A1",
+    "grammarTopics": [],
+    "vocabTopics": [],
+    "readingTexts": [],
+    "dialogues": [],
+    "exercises": [
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13
+    ],
+    "isReview": true
+  },
+  {
+    "day": 20,
+    "level": "A1",
+    "levelDescription": "Beginner",
+    "phase": "Practice & Review",
+    "title": "Practice & Review — A1",
+    "grammarTopics": [],
+    "vocabTopics": [],
+    "readingTexts": [],
+    "dialogues": [],
+    "exercises": [
+      14,
+      15,
+      16,
+      17,
+      18,
+      19
+    ],
+    "isReview": true
+  },
+  {
+    "day": 21,
+    "level": "A2",
+    "levelDescription": "Elementary",
+    "phase": "Grammar",
+    "title": "2.1 Simple Present (Presente Simples)",
+    "grammarTopics": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "vocabTopics": [
+      0
+    ],
+    "readingTexts": [],
+    "dialogues": [],
+    "exercises": [],
+    "isReview": false
+  },
+  {
+    "day": 22,
+    "level": "A2",
+    "levelDescription": "Elementary",
+    "phase": "Grammar",
+    "title": "2.5 Past Continuous (Passado Contínuo)",
+    "grammarTopics": [
+      4,
+      5,
+      6,
+      7
+    ],
+    "vocabTopics": [],
+    "readingTexts": [],
+    "dialogues": [],
+    "exercises": [],
+    "isReview": false
+  },
+  {
+    "day": 23,
+    "level": "A2",
+    "levelDescription": "Elementary",
+    "phase": "Grammar",
+    "title": "2.9 \"Will\" Future (Futuro com \"Will\")",
+    "grammarTopics": [
+      8,
+      9,
+      10,
+      11
+    ],
+    "vocabTopics": [
+      1
+    ],
+    "readingTexts": [],
+    "dialogues": [],
+    "exercises": [],
+    "isReview": false
+  },
+  {
+    "day": 24,
+    "level": "A2",
+    "levelDescription": "Elementary",
+    "phase": "Grammar",
+    "title": "2.13 Comparatives and Superlatives (Comparativos e Superlativos)",
+    "grammarTopics": [
+      12,
+      13,
+      14,
+      15
+    ],
+    "vocabTopics": [],
+    "readingTexts": [],
+    "dialogues": [],
+    "exercises": [],
+    "isReview": false
+  },
+  {
+    "day": 25,
+    "level": "A2",
+    "levelDescription": "Elementary",
+    "phase": "Grammar",
+    "title": "2.17 There is / There are",
+    "grammarTopics": [
+      16,
+      17,
+      18,
+      19
+    ],
+    "vocabTopics": [
+      2
+    ],
+    "readingTexts": [],
+    "dialogues": [],
+    "exercises": [],
+    "isReview": false
+  },
+  {
+    "day": 26,
+    "level": "A2",
+    "levelDescription": "Elementary",
+    "phase": "Grammar",
+    "title": "2.21 Possessive Adjectives and Pronouns (Adjetivos e Pronomes Possessivos)",
+    "grammarTopics": [
+      20,
+      21,
+      22,
+      23
+    ],
+    "vocabTopics": [],
+    "readingTexts": [],
+    "dialogues": [],
+    "exercises": [],
+    "isReview": false
+  },
+  {
+    "day": 27,
+    "level": "A2",
+    "levelDescription": "Elementary",
+    "phase": "Grammar",
+    "title": "2.25 Adverbs of Manner (Advérbios de Modo)",
+    "grammarTopics": [
+      24,
+      25,
+      26,
+      27
+    ],
+    "vocabTopics": [
+      3
+    ],
+    "readingTexts": [],
+    "dialogues": [],
+    "exercises": [],
+    "isReview": false
+  },
+  {
+    "day": 28,
+    "level": "A2",
+    "levelDescription": "Elementary",
+    "phase": "Grammar",
+    "title": "2.29 First Conditional (Primeira Condicional)",
+    "grammarTopics": [
+      28,
+      29
+    ],
+    "vocabTopics": [],
+    "readingTexts": [],
+    "dialogues": [],
+    "exercises": [],
+    "isReview": false
+  },
+  {
+    "day": 29,
+    "level": "A2",
+    "levelDescription": "Elementary",
+    "phase": "Vocabulary",
+    "title": "3.5 Clothes and Accessories (Roupas e Acessórios)",
+    "grammarTopics": [],
+    "vocabTopics": [
+      4,
+      5,
+      6,
+      7,
+      8
+    ],
+    "readingTexts": [],
+    "dialogues": [],
+    "exercises": [],
+    "isReview": false
+  },
+  {
+    "day": 30,
+    "level": "A2",
+    "levelDescription": "Elementary",
+    "phase": "Vocabulary",
+    "title": "3.10 Shopping and Money (Compras e Dinheiro)",
+    "grammarTopics": [],
+    "vocabTopics": [
+      9,
+      10,
+      11,
+      12,
+      13
+    ],
+    "readingTexts": [],
+    "dialogues": [],
+    "exercises": [],
+    "isReview": false
+  },
+  {
+    "day": 31,
+    "level": "A2",
+    "levelDescription": "Elementary",
+    "phase": "Vocabulary",
+    "title": "3.15 Numbers, Time and Dates (Números, Horas e Datas)",
+    "grammarTopics": [],
+    "vocabTopics": [
+      14
+    ],
+    "readingTexts": [],
+    "dialogues": [],
+    "exercises": [],
+    "isReview": false
+  },
+  {
+    "day": 32,
+    "level": "A2",
+    "levelDescription": "Elementary",
+    "phase": "Reading & Communication",
+    "title": "Text 1: A New Life in a New City",
+    "grammarTopics": [],
+    "vocabTopics": [],
+    "readingTexts": [
+      0
+    ],
+    "dialogues": [
+      0
+    ],
+    "exercises": [],
+    "isReview": false
+  },
+  {
+    "day": 33,
+    "level": "A2",
+    "levelDescription": "Elementary",
+    "phase": "Reading & Communication",
+    "title": "Text 2: The Best Holiday of My Life",
+    "grammarTopics": [],
+    "vocabTopics": [],
+    "readingTexts": [
+      1
+    ],
+    "dialogues": [
+      1
+    ],
+    "exercises": [],
+    "isReview": false
+  },
+  {
+    "day": 34,
+    "level": "A2",
+    "levelDescription": "Elementary",
+    "phase": "Reading & Communication",
+    "title": "Text 3: Working from Home",
+    "grammarTopics": [],
+    "vocabTopics": [],
+    "readingTexts": [
+      2
+    ],
+    "dialogues": [
+      2
+    ],
+    "exercises": [],
+    "isReview": false
+  },
+  {
+    "day": 35,
+    "level": "A2",
+    "levelDescription": "Elementary",
+    "phase": "Practice & Review",
+    "title": "Practice & Review — A2",
+    "grammarTopics": [],
+    "vocabTopics": [],
+    "readingTexts": [],
+    "dialogues": [],
+    "exercises": [
+      0,
+      1,
+      2
+    ],
+    "isReview": true
+  },
+  {
+    "day": 36,
+    "level": "A2",
+    "levelDescription": "Elementary",
+    "phase": "Practice & Review",
+    "title": "Practice & Review — A2",
+    "grammarTopics": [],
+    "vocabTopics": [],
+    "readingTexts": [],
+    "dialogues": [],
+    "exercises": [
+      3,
+      4,
+      5
+    ],
+    "isReview": true
+  },
+  {
+    "day": 37,
+    "level": "A2",
+    "levelDescription": "Elementary",
+    "phase": "Practice & Review",
+    "title": "Practice & Review — A2",
+    "grammarTopics": [],
+    "vocabTopics": [],
+    "readingTexts": [],
+    "dialogues": [],
+    "exercises": [
+      6,
+      7,
+      8,
+      9
+    ],
+    "isReview": true
+  },
+  {
+    "day": 38,
+    "level": "A2",
+    "levelDescription": "Elementary",
+    "phase": "Practice & Review",
+    "title": "Practice & Review — A2",
+    "grammarTopics": [],
+    "vocabTopics": [],
+    "readingTexts": [],
+    "dialogues": [],
+    "exercises": [
+      10
+    ],
+    "isReview": true
+  },
+  {
+    "day": 39,
+    "level": "B1",
+    "levelDescription": "Intermediate",
+    "phase": "Grammar",
+    "title": "2.1 Present Perfect Simple",
+    "grammarTopics": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "vocabTopics": [
+      0
+    ],
+    "readingTexts": [],
+    "dialogues": [],
+    "exercises": [],
+    "isReview": false
+  },
+  {
+    "day": 40,
+    "level": "B1",
+    "levelDescription": "Intermediate",
+    "phase": "Grammar",
+    "title": "2.5 Past Perfect Continuous",
+    "grammarTopics": [
+      4,
+      5,
+      6,
+      7
+    ],
+    "vocabTopics": [],
+    "readingTexts": [],
+    "dialogues": [],
+    "exercises": [],
+    "isReview": false
+  },
+  {
+    "day": 41,
+    "level": "B1",
+    "levelDescription": "Intermediate",
+    "phase": "Grammar",
+    "title": "2.9 First Conditional (Condicional Tipo 1)",
+    "grammarTopics": [
+      8,
+      9,
+      10,
+      11
+    ],
+    "vocabTopics": [
+      1
+    ],
+    "readingTexts": [],
+    "dialogues": [],
+    "exercises": [],
+    "isReview": false
+  },
+  {
+    "day": 42,
+    "level": "B1",
+    "levelDescription": "Intermediate",
+    "phase": "Grammar",
+    "title": "2.13 Relative Clauses (Orações Relativas)",
+    "grammarTopics": [
+      12,
+      13,
+      14,
+      15
+    ],
+    "vocabTopics": [],
+    "readingTexts": [],
+    "dialogues": [],
+    "exercises": [],
+    "isReview": false
+  },
+  {
+    "day": 43,
+    "level": "B1",
+    "levelDescription": "Intermediate",
+    "phase": "Grammar",
+    "title": "2.17 Quantifiers (Quantificadores)",
+    "grammarTopics": [
+      16,
+      17,
+      18,
+      19
+    ],
+    "vocabTopics": [
+      2
+    ],
+    "readingTexts": [],
+    "dialogues": [],
+    "exercises": [],
+    "isReview": false
+  },
+  {
+    "day": 44,
+    "level": "B1",
+    "levelDescription": "Intermediate",
+    "phase": "Grammar",
+    "title": "2.21 So / Such / Too / Enough",
+    "grammarTopics": [
+      20,
+      21
+    ],
+    "vocabTopics": [],
+    "readingTexts": [],
+    "dialogues": [],
+    "exercises": [],
+    "isReview": false
+  },
+  {
+    "day": 45,
+    "level": "B1",
+    "levelDescription": "Intermediate",
+    "phase": "Grammar",
+    "title": "B1 Grammar Day 7",
+    "grammarTopics": [],
+    "vocabTopics": [
+      3
+    ],
+    "readingTexts": [],
+    "dialogues": [],
+    "exercises": [],
+    "isReview": false
+  },
+  {
+    "day": 46,
+    "level": "B1",
+    "levelDescription": "Intermediate",
+    "phase": "Vocabulary",
+    "title": "3.5 Tecnologia e Internet (Technology and the Internet)",
+    "grammarTopics": [],
+    "vocabTopics": [
+      4,
+      5,
+      6
+    ],
+    "readingTexts": [],
+    "dialogues": [],
+    "exercises": [],
+    "isReview": false
+  },
+  {
+    "day": 47,
+    "level": "B1",
+    "levelDescription": "Intermediate",
+    "phase": "Vocabulary",
+    "title": "3.8 Collocations do Nível B1",
+    "grammarTopics": [],
+    "vocabTopics": [
+      7
+    ],
+    "readingTexts": [],
+    "dialogues": [],
+    "exercises": [],
+    "isReview": false
+  },
+  {
+    "day": 48,
+    "level": "B1",
+    "levelDescription": "Intermediate",
+    "phase": "Vocabulary",
+    "title": "B1 Vocabulary Day 10",
+    "grammarTopics": [],
+    "vocabTopics": [],
+    "readingTexts": [],
+    "dialogues": [],
+    "exercises": [],
+    "isReview": false
+  },
+  {
+    "day": 49,
+    "level": "B1",
+    "levelDescription": "Intermediate",
+    "phase": "Reading & Communication",
+    "title": "Texto 1: The Digital Nomad Lifestyle",
+    "grammarTopics": [],
+    "vocabTopics": [],
+    "readingTexts": [
+      0
+    ],
+    "dialogues": [
+      0
+    ],
+    "exercises": [],
+    "isReview": false
+  },
+  {
+    "day": 50,
+    "level": "B1",
+    "levelDescription": "Intermediate",
+    "phase": "Reading & Communication",
+    "title": "Texto 2: The Health Revolution — How Small Changes Can Transform Your Life",
+    "grammarTopics": [],
+    "vocabTopics": [],
+    "readingTexts": [
+      1
+    ],
+    "dialogues": [
+      1
+    ],
+    "exercises": [],
+    "isReview": false
+  },
+  {
+    "day": 51,
+    "level": "B1",
+    "levelDescription": "Intermediate",
+    "phase": "Reading & Communication",
+    "title": "Texto 3: A Second Chance — The Story of Marcus Hall",
+    "grammarTopics": [],
+    "vocabTopics": [],
+    "readingTexts": [
+      2
+    ],
+    "dialogues": [
+      2
+    ],
+    "exercises": [],
+    "isReview": false
+  },
+  {
+    "day": 52,
+    "level": "B1",
+    "levelDescription": "Intermediate",
+    "phase": "Practice & Review",
+    "title": "Practice & Review — B1",
+    "grammarTopics": [],
+    "vocabTopics": [],
+    "readingTexts": [],
+    "dialogues": [],
+    "exercises": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "isReview": true
+  },
+  {
+    "day": 53,
+    "level": "B1",
+    "levelDescription": "Intermediate",
+    "phase": "Practice & Review",
+    "title": "Practice & Review — B1",
+    "grammarTopics": [],
+    "vocabTopics": [],
+    "readingTexts": [],
+    "dialogues": [],
+    "exercises": [
+      6,
+      7,
+      8,
+      9,
+      10,
+      11
+    ],
+    "isReview": true
+  },
+  {
+    "day": 54,
+    "level": "B1",
+    "levelDescription": "Intermediate",
+    "phase": "Practice & Review",
+    "title": "Practice & Review — B1",
+    "grammarTopics": [],
+    "vocabTopics": [],
+    "readingTexts": [],
+    "dialogues": [],
+    "exercises": [
+      12,
+      13,
+      14,
+      15
+    ],
+    "isReview": true
+  },
+  {
+    "day": 55,
+    "level": "B2",
+    "levelDescription": "Upper-Intermediate",
+    "phase": "Grammar",
+    "title": "2.1 Mixed Conditionals (Condicionais Mistas)",
+    "grammarTopics": [
+      0,
+      1,
+      2
+    ],
+    "vocabTopics": [
+      0
+    ],
+    "readingTexts": [],
+    "dialogues": [],
+    "exercises": [],
+    "isReview": false
+  },
+  {
+    "day": 56,
+    "level": "B2",
+    "levelDescription": "Upper-Intermediate",
+    "phase": "Grammar",
+    "title": "2.4 Passive Voice — Estruturas Avançadas",
+    "grammarTopics": [
+      3,
+      4,
+      5
+    ],
+    "vocabTopics": [],
+    "readingTexts": [],
+    "dialogues": [],
+    "exercises": [],
+    "isReview": false
+  },
+  {
+    "day": 57,
+    "level": "B2",
+    "levelDescription": "Upper-Intermediate",
+    "phase": "Grammar",
+    "title": "2.7 Future Forms — Nuances Avançadas",
+    "grammarTopics": [
+      6,
+      7,
+      8
+    ],
+    "vocabTopics": [
+      1
+    ],
+    "readingTexts": [],
+    "dialogues": [],
+    "exercises": [],
+    "isReview": false
+  },
+  {
+    "day": 58,
+    "level": "B2",
+    "levelDescription": "Upper-Intermediate",
+    "phase": "Grammar",
+    "title": "2.10 Participle Clauses (Orações Participiais)",
+    "grammarTopics": [
+      9,
+      10,
+      11
+    ],
+    "vocabTopics": [],
+    "readingTexts": [],
+    "dialogues": [],
+    "exercises": [],
+    "isReview": false
+  },
+  {
+    "day": 59,
+    "level": "B2",
+    "levelDescription": "Upper-Intermediate",
+    "phase": "Grammar",
+    "title": "2.13 Articles — Uso Avançado",
+    "grammarTopics": [
+      12,
+      13,
+      14
+    ],
+    "vocabTopics": [
+      2
+    ],
+    "readingTexts": [],
+    "dialogues": [],
+    "exercises": [],
+    "isReview": false
+  },
+  {
+    "day": 60,
+    "level": "B2",
+    "levelDescription": "Upper-Intermediate",
+    "phase": "Grammar",
+    "title": "2.16 Discourse Markers e Hedging Language",
+    "grammarTopics": [
+      15
+    ],
+    "vocabTopics": [],
+    "readingTexts": [],
+    "dialogues": [],
+    "exercises": [],
+    "isReview": false
+  },
+  {
+    "day": 61,
+    "level": "B2",
+    "levelDescription": "Upper-Intermediate",
+    "phase": "Vocabulary",
+    "title": "3.4 Meio Ambiente (Environment)",
+    "grammarTopics": [],
+    "vocabTopics": [
+      3,
+      4,
+      5,
+      6,
+      7
+    ],
+    "readingTexts": [],
+    "dialogues": [],
+    "exercises": [],
+    "isReview": false
+  },
+  {
+    "day": 62,
+    "level": "B2",
+    "levelDescription": "Upper-Intermediate",
+    "phase": "Vocabulary",
+    "title": "3.9 Expressões Idiomáticas (Idiomatic Expressions) — Nível B2",
+    "grammarTopics": [],
+    "vocabTopics": [
+      8
+    ],
+    "readingTexts": [],
+    "dialogues": [],
+    "exercises": [],
+    "isReview": false
+  },
+  {
+    "day": 63,
+    "level": "B2",
+    "levelDescription": "Upper-Intermediate",
+    "phase": "Reading & Communication",
+    "title": "Text 1: The Hidden Cost of Convenience",
+    "grammarTopics": [],
+    "vocabTopics": [],
+    "readingTexts": [
+      0
+    ],
+    "dialogues": [
+      0
+    ],
+    "exercises": [],
+    "isReview": false
+  },
+  {
+    "day": 64,
+    "level": "B2",
+    "levelDescription": "Upper-Intermediate",
+    "phase": "Reading & Communication",
+    "title": "Text 2: The Psychology of Decision-Making",
+    "grammarTopics": [],
+    "vocabTopics": [],
+    "readingTexts": [
+      1
+    ],
+    "dialogues": [
+      1
+    ],
+    "exercises": [],
+    "isReview": false
+  },
+  {
+    "day": 65,
+    "level": "B2",
+    "levelDescription": "Upper-Intermediate",
+    "phase": "Practice & Review",
+    "title": "Practice & Review — B2",
+    "grammarTopics": [],
+    "vocabTopics": [],
+    "readingTexts": [],
+    "dialogues": [],
+    "exercises": [
+      0,
+      1,
+      2
+    ],
+    "isReview": true
+  },
+  {
+    "day": 66,
+    "level": "B2",
+    "levelDescription": "Upper-Intermediate",
+    "phase": "Practice & Review",
+    "title": "Practice & Review — B2",
+    "grammarTopics": [],
+    "vocabTopics": [],
+    "readingTexts": [],
+    "dialogues": [],
+    "exercises": [
+      3,
+      4,
+      5
+    ],
+    "isReview": true
+  },
+  {
+    "day": 67,
+    "level": "B2",
+    "levelDescription": "Upper-Intermediate",
+    "phase": "Practice & Review",
+    "title": "Practice & Review — B2",
+    "grammarTopics": [],
+    "vocabTopics": [],
+    "readingTexts": [],
+    "dialogues": [],
+    "exercises": [
+      6,
+      7,
+      8
+    ],
+    "isReview": true
+  },
+  {
+    "day": 68,
+    "level": "B2",
+    "levelDescription": "Upper-Intermediate",
+    "phase": "Practice & Review",
+    "title": "Practice & Review — B2",
+    "grammarTopics": [],
+    "vocabTopics": [],
+    "readingTexts": [],
+    "dialogues": [],
+    "exercises": [
+      9
+    ],
+    "isReview": true
+  },
+  {
+    "day": 69,
+    "level": "C1",
+    "levelDescription": "Advanced",
+    "phase": "Grammar",
+    "title": "2.1 Mixed Conditionals (Condicionais Mistas)",
+    "grammarTopics": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "vocabTopics": [
+      0
+    ],
+    "readingTexts": [],
+    "dialogues": [],
+    "exercises": [],
+    "isReview": false
+  },
+  {
+    "day": 70,
+    "level": "C1",
+    "levelDescription": "Advanced",
+    "phase": "Grammar",
+    "title": "2.5 Advanced Passive Structures (Estruturas Passivas Avançadas)",
+    "grammarTopics": [
+      4,
+      5,
+      6,
+      7
+    ],
+    "vocabTopics": [],
+    "readingTexts": [],
+    "dialogues": [],
+    "exercises": [],
+    "isReview": false
+  },
+  {
+    "day": 71,
+    "level": "C1",
+    "levelDescription": "Advanced",
+    "phase": "Grammar",
+    "title": "2.9 Nominal Clauses and Advanced Noun Phrases (Orações Nominais e Sintagmas Nominais Avançados)",
+    "grammarTopics": [
+      8,
+      9,
+      10,
+      11
+    ],
+    "vocabTopics": [
+      1
+    ],
+    "readingTexts": [],
+    "dialogues": [],
+    "exercises": [],
+    "isReview": false
+  },
+  {
+    "day": 72,
+    "level": "C1",
+    "levelDescription": "Advanced",
+    "phase": "Grammar",
+    "title": "2.13 Advanced Uses of \"Would\", \"Will\", and \"Shall\"",
+    "grammarTopics": [
+      12,
+      13,
+      14,
+      15
+    ],
+    "vocabTopics": [],
+    "readingTexts": [],
+    "dialogues": [],
+    "exercises": [],
+    "isReview": false
+  },
+  {
+    "day": 73,
+    "level": "C1",
+    "levelDescription": "Advanced",
+    "phase": "Grammar",
+    "title": "C1 Grammar Day 5",
+    "grammarTopics": [],
+    "vocabTopics": [
+      2
+    ],
+    "readingTexts": [],
+    "dialogues": [],
+    "exercises": [],
+    "isReview": false
+  },
+  {
+    "day": 74,
+    "level": "C1",
+    "levelDescription": "Advanced",
+    "phase": "Vocabulary",
+    "title": "3.4 Health and Well-being",
+    "grammarTopics": [],
+    "vocabTopics": [
+      3,
+      4,
+      5,
+      6
+    ],
+    "readingTexts": [],
+    "dialogues": [],
+    "exercises": [],
+    "isReview": false
+  },
+  {
+    "day": 75,
+    "level": "C1",
+    "levelDescription": "Advanced",
+    "phase": "Vocabulary",
+    "title": "3.8 Academic and Formal Vocabulary",
+    "grammarTopics": [],
+    "vocabTopics": [
+      7
+    ],
+    "readingTexts": [],
+    "dialogues": [],
+    "exercises": [],
+    "isReview": false
+  },
+  {
+    "day": 76,
+    "level": "C1",
+    "levelDescription": "Advanced",
+    "phase": "Reading & Communication",
+    "title": "Texto 1: The Paradox of Choice in the Information Age",
+    "grammarTopics": [],
+    "vocabTopics": [],
+    "readingTexts": [
+      0
+    ],
+    "dialogues": [
+      0
+    ],
+    "exercises": [],
+    "isReview": false
+  },
+  {
+    "day": 77,
+    "level": "C1",
+    "levelDescription": "Advanced",
+    "phase": "Reading & Communication",
+    "title": "Texto 2: The Ethics of Artificial Intelligence in Criminal Justice",
+    "grammarTopics": [],
+    "vocabTopics": [],
+    "readingTexts": [
+      1
+    ],
+    "dialogues": [
+      1
+    ],
+    "exercises": [],
+    "isReview": false
+  },
+  {
+    "day": 78,
+    "level": "C1",
+    "levelDescription": "Advanced",
+    "phase": "Practice & Review",
+    "title": "Practice & Review — C1",
+    "grammarTopics": [],
+    "vocabTopics": [],
+    "readingTexts": [],
+    "dialogues": [],
+    "exercises": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "isReview": true
+  },
+  {
+    "day": 79,
+    "level": "C1",
+    "levelDescription": "Advanced",
+    "phase": "Practice & Review",
+    "title": "Practice & Review — C1",
+    "grammarTopics": [],
+    "vocabTopics": [],
+    "readingTexts": [],
+    "dialogues": [],
+    "exercises": [
+      5,
+      6,
+      7,
+      8,
+      9
+    ],
+    "isReview": true
+  },
+  {
+    "day": 80,
+    "level": "C1",
+    "levelDescription": "Advanced",
+    "phase": "Practice & Review",
+    "title": "Practice & Review — C1",
+    "grammarTopics": [],
+    "vocabTopics": [],
+    "readingTexts": [],
+    "dialogues": [],
+    "exercises": [
+      10,
+      11,
+      12,
+      13
+    ],
+    "isReview": true
+  },
+  {
+    "day": 81,
+    "level": "C2",
+    "levelDescription": "Proficiency",
+    "phase": "Grammar",
+    "title": "2.1 Inversão (Inversion) — Uso Avançado e Estilístico",
+    "grammarTopics": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "vocabTopics": [
+      0
+    ],
+    "readingTexts": [],
+    "dialogues": [],
+    "exercises": [],
+    "isReview": false
+  },
+  {
+    "day": 82,
+    "level": "C2",
+    "levelDescription": "Proficiency",
+    "phase": "Grammar",
+    "title": "2.5 Participle Clauses (Orações Participiais Avançadas)",
+    "grammarTopics": [
+      4,
+      5,
+      6,
+      7
+    ],
+    "vocabTopics": [],
+    "readingTexts": [],
+    "dialogues": [],
+    "exercises": [],
+    "isReview": false
+  },
+  {
+    "day": 83,
+    "level": "C2",
+    "levelDescription": "Proficiency",
+    "phase": "Grammar",
+    "title": "2.9 Hedging and Vague Language (Atenuação e Linguagem Vaga)",
+    "grammarTopics": [
+      8,
+      9,
+      10,
+      11
+    ],
+    "vocabTopics": [
+      1
+    ],
+    "readingTexts": [],
+    "dialogues": [],
+    "exercises": [],
+    "isReview": false
+  },
+  {
+    "day": 84,
+    "level": "C2",
+    "levelDescription": "Proficiency",
+    "phase": "Grammar",
+    "title": "2.13 Advanced Relative Clauses (Orações Relativas Avançadas)",
+    "grammarTopics": [
+      12,
+      13,
+      14,
+      15
+    ],
+    "vocabTopics": [],
+    "readingTexts": [],
+    "dialogues": [],
+    "exercises": [],
+    "isReview": false
+  },
+  {
+    "day": 85,
+    "level": "C2",
+    "levelDescription": "Proficiency",
+    "phase": "Vocabulary",
+    "title": "3.3 Economia e Finanças",
+    "grammarTopics": [],
+    "vocabTopics": [
+      2,
+      3,
+      4,
+      5
+    ],
+    "readingTexts": [],
+    "dialogues": [],
+    "exercises": [],
+    "isReview": false
+  },
+  {
+    "day": 86,
+    "level": "C2",
+    "levelDescription": "Proficiency",
+    "phase": "Vocabulary",
+    "title": "3.7 Collocations Avançadas (Multi-temáticas)",
+    "grammarTopics": [],
+    "vocabTopics": [
+      6,
+      7
+    ],
+    "readingTexts": [],
+    "dialogues": [],
+    "exercises": [],
+    "isReview": false
+  },
+  {
+    "day": 87,
+    "level": "C2",
+    "levelDescription": "Proficiency",
+    "phase": "Reading & Communication",
+    "title": "Text 1: The Paradox of Progress",
+    "grammarTopics": [],
+    "vocabTopics": [],
+    "readingTexts": [
+      0
+    ],
+    "dialogues": [
+      0
+    ],
+    "exercises": [],
+    "isReview": false
+  },
+  {
+    "day": 88,
+    "level": "C2",
+    "levelDescription": "Proficiency",
+    "phase": "Reading & Communication",
+    "title": "Text 2: The Architecture of Memory",
+    "grammarTopics": [],
+    "vocabTopics": [],
+    "readingTexts": [
+      1
+    ],
+    "dialogues": [
+      1
+    ],
+    "exercises": [],
+    "isReview": false
+  },
+  {
+    "day": 89,
+    "level": "C2",
+    "levelDescription": "Proficiency",
+    "phase": "Practice & Review",
+    "title": "Practice & Review — C2",
+    "grammarTopics": [],
+    "vocabTopics": [],
+    "readingTexts": [],
+    "dialogues": [],
+    "exercises": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "isReview": true
+  },
+  {
+    "day": 90,
+    "level": "C2",
+    "levelDescription": "Proficiency",
+    "phase": "Practice & Review",
+    "title": "Practice & Review — C2",
+    "grammarTopics": [],
+    "vocabTopics": [],
+    "readingTexts": [],
+    "dialogues": [],
+    "exercises": [
+      4,
+      5,
+      6
+    ],
+    "isReview": true
+  }
+]

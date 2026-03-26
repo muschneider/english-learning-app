@@ -1,0 +1,53 @@
+{
+  "levels": [
+    {
+      "id": "A1",
+      "name": "A1 — Beginner",
+      "days": "1-20",
+      "dayStart": 1,
+      "dayEnd": 20,
+      "color": "#22c55e"
+    },
+    {
+      "id": "A2",
+      "name": "A2 — Elementary",
+      "days": "21-38",
+      "dayStart": 21,
+      "dayEnd": 38,
+      "color": "#3b82f6"
+    },
+    {
+      "id": "B1",
+      "name": "B1 — Intermediate",
+      "days": "39-54",
+      "dayStart": 39,
+      "dayEnd": 54,
+      "color": "#a855f7"
+    },
+    {
+      "id": "B2",
+      "name": "B2 — Upper-Intermediate",
+      "days": "55-68",
+      "dayStart": 55,
+      "dayEnd": 68,
+      "color": "#f59e0b"
+    },
+    {
+      "id": "C1",
+      "name": "C1 — Advanced",
+      "days": "69-80",
+      "dayStart": 69,
+      "dayEnd": 80,
+      "color": "#ef4444"
+    },
+    {
+      "id": "C2",
+      "name": "C2 — Proficiency",
+      "days": "81-90",
+      "dayStart": 81,
+      "dayEnd": 90,
+      "color": "#ec4899"
+    }
+  ],
+  "totalDays": 90
+}
