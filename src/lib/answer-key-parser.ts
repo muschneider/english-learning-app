@@ -13,6 +13,18 @@ const NUMBERED_ANSWER = /^(\d+)\.\s+(.+)/;
 const GABARITO_SECTION = /##\s*Gabarito\s*[—–-]\s*Exerc[ií]cio\s+(\d+)/i;
 
 /**
+ * Extract the exercise number from its title.
+ * E.g., "Exercício 8: Reescreva..." → 8
+ *       "Exercise 3: Cleft Sentences" → 3
+ * Returns null if no number found.
+ */
+export function extractExerciseNumber(title: string): number | null {
+  const match = title.match(/(?:Exerc[ií]cio|Exercise)\s+(\d+)/i);
+  if (match) return parseInt(match[1], 10);
+  return null;
+}
+
+/**
  * Parse the A1-style embedded answer key (GABARITO COMPLETO in the last exercise content).
  * Returns a map of exerciseNumber (1-based) → questionNumber → AnswerEntry.
  */
@@ -43,6 +55,10 @@ export function parseEmbeddedAnswerKey(
 
 /**
  * Parse the B2/C2-style answerKey field (structured by exercise sections).
+ * Handles multiple formats:
+ *   - "## Exercise N: ..." (C2 style)
+ *   - "**Exercício N — ..." bold headers with continuous numbering (B2 style)
+ *   - "### Respostas — ..." section headers
  * Returns a map of exerciseNumber (1-based) → questionNumber → AnswerEntry.
  */
 export function parseFieldAnswerKey(
@@ -51,29 +67,42 @@ export function parseFieldAnswerKey(
   const result = new Map<number, Map<number, AnswerEntry>>();
   if (!answerKeyText.trim()) return result;
 
-  // Split by exercise sections
-  const sections = answerKeyText.split(/(?=##\s*(?:Exercise|Exerc[ií]cio|Respostas)\s)/i);
-
-  let currentExerciseNum = 0;
-  for (const section of sections) {
-    // Try to find exercise number in header
+  // Strategy A: Try splitting by ## Exercise N headers (C2 style)
+  const hashSections = answerKeyText.split(/(?=##\s*(?:Exercise|Exerc[ií]cio)\s+\d+)/i);
+  let foundHashSections = false;
+  for (const section of hashSections) {
     const exMatch = section.match(/##\s*(?:Exercise|Exerc[ií]cio)\s*(\d+)/i);
     if (exMatch) {
-      currentExerciseNum = parseInt(exMatch[1], 10);
-    } else {
-      // For sections like "### Respostas — Text 1", try a sequential approach
-      const resMatch = section.match(/Respostas/i);
-      if (resMatch) {
-        currentExerciseNum++;
-      } else if (currentExerciseNum === 0) {
-        continue;
+      foundHashSections = true;
+      const exNum = parseInt(exMatch[1], 10);
+      const answers = parseAnswerLines(section);
+      if (answers.size > 0) {
+        result.set(exNum, answers);
       }
     }
+  }
+  if (foundHashSections) return result;
 
-    const answers = parseAnswerLines(section);
-    if (answers.size > 0) {
-      result.set(currentExerciseNum, answers);
+  // Strategy B: Try splitting by bold **Exercício N** headers (B2 style)
+  // B2 uses continuous numbering across exercises (e.g., Ex2 starts at Q6).
+  // Keep original question numbers since they match the exercise content numbering.
+  const boldSections = answerKeyText.split(/(?=\*\*Exerc[ií]cio\s+\d+)/i);
+  for (const section of boldSections) {
+    const exMatch = section.match(/\*\*Exerc[ií]cio\s+(\d+)/i);
+    if (exMatch) {
+      const exNum = parseInt(exMatch[1], 10);
+      const answers = parseAnswerLines(section);
+      if (answers.size > 0) {
+        result.set(exNum, answers);
+      }
     }
+  }
+  if (result.size > 0) return result;
+
+  // Strategy C: Fallback — treat entire text as one block
+  const answers = parseAnswerLines(answerKeyText);
+  if (answers.size > 0) {
+    result.set(1, answers);
   }
 
   return result;
@@ -97,6 +126,7 @@ export function parseAnswerOnlyContent(
  * - "1. Do / do"  (multiple blanks)
  * - "1. She is not (isn't) a teacher." (alternative forms)
  * - "1. b) goes"  (MC answers)
+ * - "1. If she **had studied** law..." (bold answers in text)
  */
 function parseAnswerLines(text: string): Map<number, AnswerEntry> {
   const answers = new Map<number, AnswerEntry>();
@@ -104,20 +134,34 @@ function parseAnswerLines(text: string): Map<number, AnswerEntry> {
 
   for (const line of lines) {
     const trimmed = line.trim();
-    // Skip bold markdown formatting lines that aren't numbered answers
-    if (trimmed.startsWith('**Q') || trimmed.startsWith('##')) continue;
+    // Skip headers and non-answer lines
+    if (trimmed.startsWith('**Q') || trimmed.startsWith('##') || trimmed.startsWith('###')) continue;
+    if (trimmed.startsWith('**Exerc') || trimmed.startsWith('**Exercise')) continue;
 
     const match = trimmed.match(NUMBERED_ANSWER);
     if (!match) continue;
 
     const num = parseInt(match[1], 10);
-    const answerText = match[2].trim();
+    let answerText = match[2].trim();
 
     // Remove trailing markdown separators
-    const cleanAnswer = answerText.replace(/\s*---\s*$/, '').trim();
-    if (!cleanAnswer) continue;
+    answerText = answerText.replace(/\s*---\s*$/, '').trim();
+    if (!answerText) continue;
 
-    const entry = parseAnswerText(cleanAnswer);
+    // Extract bold answers from text like "If she **had studied** law, she **would be** a lawyer."
+    // For these, extract the bold parts as the answer
+    const boldParts = answerText.match(/\*\*([^*]+)\*\*/g);
+    if (boldParts && boldParts.length > 0) {
+      const boldAnswers = boldParts.map((b) => b.replace(/\*\*/g, '').trim());
+      const entry: AnswerEntry = {
+        acceptedAnswers: boldAnswers.map((a) => extractAlternatives(a)),
+        displayAnswer: boldAnswers.join(' / '),
+      };
+      answers.set(num, entry);
+      continue;
+    }
+
+    const entry = parseAnswerText(answerText);
     answers.set(num, entry);
   }
 
@@ -126,14 +170,6 @@ function parseAnswerLines(text: string): Map<number, AnswerEntry> {
 
 /**
  * Parse a single answer text into an AnswerEntry with accepted alternatives.
- *
- * Examples:
- * - "am" → [["am"]]
- * - "Do / do" → [["Do"], ["do"]]  (two separate blanks)
- * - "She is not (isn't) a teacher." → [["She is not a teacher.", "She isn't a teacher."]]
- * - "b) goes" → [["goes"]]
- * - "in (ou at)" → [["in", "at"]]
- * - "— (sem artigo — \"I like music.\")" → [["—", ""]]
  */
 function parseAnswerText(text: string): AnswerEntry {
   const displayAnswer = text;
@@ -148,8 +184,6 @@ function parseAnswerText(text: string): AnswerEntry {
   }
 
   // Check for "answer1 / answer2" pattern (could be multi-blank or alternatives)
-  // Heuristic: if the parts look like they're separate blanks (short, different words),
-  // treat as multi-blank. Otherwise treat as alternatives.
   if (text.includes(' / ')) {
     const parts = text.split(' / ').map((p) => p.trim());
 
@@ -166,10 +200,7 @@ function parseAnswerText(text: string): AnswerEntry {
     if (text.includes('...')) {
       const multiBlanks = text.split(/\s*\.\.\.\s*/).map((p) => p.trim()).filter(Boolean);
       return {
-        acceptedAnswers: multiBlanks.map((p) => {
-          // Each part might have alternatives in parentheses
-          return extractAlternatives(p);
-        }),
+        acceptedAnswers: multiBlanks.map((p) => extractAlternatives(p)),
         displayAnswer,
       };
     }
@@ -209,9 +240,6 @@ function parseAnswerText(text: string): AnswerEntry {
         displayAnswer,
       };
     }
-
-    // For hint-style parens like "(cook)" — just use the main text
-    // These are verb hints, not alternatives
   }
 
   // Simple single answer
@@ -228,7 +256,6 @@ function parseAnswerText(text: string): AnswerEntry {
 function extractAlternatives(text: string): string[] {
   const alts = [text];
 
-  // Add common contraction/expansion alternatives
   if (text.includes("n't")) {
     const expanded = text
       .replace("can't", 'cannot')
@@ -253,31 +280,34 @@ function extractAlternatives(text: string): string[] {
 }
 
 /**
- * Resolve the correct answers for a specific exercise within a day.
+ * Resolve the correct answers for a specific exercise.
  *
- * This handles the various data patterns across levels:
- * - A1: answers embedded in last exercise's content
- * - B2/C2: answers in answerKey field
- * - A2/B1/C1: exercise content IS the answers (answer-only)
+ * Uses the exercise title to identify the exercise number and match
+ * against the answer key (embedded GABARITO or answerKey field).
+ *
+ * @param exerciseTitle - The exercise title, e.g., "Exercício 8: Reescreva..."
+ * @param allLevelExercises - All exercises in the level (for finding embedded GABARITO)
+ * @param answerKeyField - The level's answerKey field (B2/C2)
  */
 export function resolveAnswersForExercise(
-  exerciseIndex: number,
-  _exerciseContent: string,
-  allExercisesContent: string[],
+  exerciseTitle: string,
+  allLevelExercises: { title: string; content: string }[],
   answerKeyField: string
 ): Map<number, AnswerEntry> | null {
+  const exerciseNum = extractExerciseNumber(exerciseTitle);
+  if (exerciseNum === null) return null;
+
   // Strategy 1: Check the answerKey field (B2/C2)
   if (answerKeyField && answerKeyField.trim().length > 0) {
     const allAnswers = parseFieldAnswerKey(answerKeyField);
-    // Exercise indices in the data are 0-based, answer keys are 1-based
-    return allAnswers.get(exerciseIndex + 1) || null;
+    return allAnswers.get(exerciseNum) || null;
   }
 
-  // Strategy 2: Check for embedded GABARITO in any exercise (A1 pattern)
-  for (const content of allExercisesContent) {
-    if (content.includes('GABARITO COMPLETO')) {
-      const allAnswers = parseEmbeddedAnswerKey(content);
-      return allAnswers.get(exerciseIndex + 1) || null;
+  // Strategy 2: Check for embedded GABARITO in any exercise across the whole level (A1 pattern)
+  for (const ex of allLevelExercises) {
+    if (ex.content.includes('GABARITO COMPLETO')) {
+      const allAnswers = parseEmbeddedAnswerKey(ex.content);
+      return allAnswers.get(exerciseNum) || null;
     }
   }
 

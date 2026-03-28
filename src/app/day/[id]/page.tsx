@@ -31,7 +31,7 @@ export default function DayPage({ params }: { params: Promise<{ id: string }> })
     );
   }
 
-  const { plan, grammar, vocabulary, reading, dialogues, exercises, answerKey } = dayContent;
+  const { plan, grammar, vocabulary, reading, dialogues, exercises, answerKey, allLevelExercises } = dayContent;
   const isCompleted = completedDays.includes(dayNum);
   const levelMeta = course.levels.find((l) => l.id === plan.level);
 
@@ -82,6 +82,7 @@ export default function DayPage({ params }: { params: Promise<{ id: string }> })
             dayId={dayNum}
             exercises={exercises}
             answerKey={answerKey}
+            allLevelExercises={allLevelExercises}
           />
         );
       default:

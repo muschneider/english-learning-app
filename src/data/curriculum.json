@@ -220,13 +220,20 @@
     "level": "A1",
     "levelDescription": "Beginner",
     "phase": "Vocabulary",
-    "title": "A1 Vocabulary Day 13",
+    "title": "Vocabulary Review & Dialogue 5: Asking for Directions",
     "grammarTopics": [],
-    "vocabTopics": [],
+    "vocabTopics": [
+      0,
+      5,
+      10,
+      15
+    ],
     "readingTexts": [],
-    "dialogues": [],
+    "dialogues": [
+      4
+    ],
     "exercises": [],
-    "isReview": false
+    "isReview": true
   },
   {
     "day": 14,
@@ -841,13 +848,19 @@
     "level": "B1",
     "levelDescription": "Intermediate",
     "phase": "Vocabulary",
-    "title": "B1 Vocabulary Day 10",
+    "title": "Vocabulary Review & Dialogue 4: Planning a Trip with Friends",
     "grammarTopics": [],
-    "vocabTopics": [],
+    "vocabTopics": [
+      0,
+      4,
+      7
+    ],
     "readingTexts": [],
-    "dialogues": [],
+    "dialogues": [
+      3
+    ],
     "exercises": [],
-    "isReview": false
+    "isReview": true
   },
   {
     "day": 49,

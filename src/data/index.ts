@@ -87,6 +87,8 @@ export function getDayContent(day: number) {
     dialogues: plan.dialogues.map((i) => level.communication[i]).filter(Boolean),
     exercises: plan.exercises.map((i) => level.exercises[i]).filter(Boolean),
     answerKey: level.answerKey,
+    /** All exercises in the level (needed for answer key resolution across days) */
+    allLevelExercises: level.exercises,
   };
 }
 

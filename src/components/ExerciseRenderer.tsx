@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect, useCallback } from 'react';
-import { parseExercise, isAnswerOnlyExercise } from '@/lib/exercise-parser';
+import { parseExercise } from '@/lib/exercise-parser';
 import { resolveAnswersForExercise } from '@/lib/answer-key-parser';
 import { calculateScore } from '@/lib/answer-checker';
 import { useProgressStore } from '@/store/progress';
@@ -20,6 +20,8 @@ interface ExerciseRendererProps {
   exercises: ContentSection[];
   /** The level's answerKey field */
   answerKey: string;
+  /** All exercises in the level (for GABARITO lookup across days) */
+  allLevelExercises: ContentSection[];
 }
 
 /**
@@ -33,6 +35,7 @@ export function ExerciseRenderer({
   dayId,
   exercises,
   answerKey,
+  allLevelExercises,
 }: ExerciseRendererProps) {
   return (
     <div className="flex flex-col gap-8">
@@ -42,9 +45,8 @@ export function ExerciseRenderer({
           dayId={dayId}
           exercise={exercise}
           exerciseIndex={index}
-          allExercisesContent={exercises.map((e) => e.content)}
+          allLevelExercises={allLevelExercises}
           answerKey={answerKey}
-          
         />
       ))}
     </div>
@@ -55,7 +57,7 @@ interface SingleExerciseProps {
   dayId: number;
   exercise: ContentSection;
   exerciseIndex: number;
-  allExercisesContent: string[];
+  allLevelExercises: ContentSection[];
   answerKey: string;
 }
 
@@ -63,7 +65,7 @@ function SingleExercise({
   dayId,
   exercise,
   exerciseIndex,
-  allExercisesContent,
+  allLevelExercises,
   answerKey,
 }: SingleExerciseProps) {
   const saveExerciseAnswers = useProgressStore((s) => s.saveExerciseAnswers);
@@ -75,15 +77,20 @@ function SingleExercise({
   // Parse the exercise and resolve answers
   const parsed: ParsedExercise = parseExercise(exercise.title, exercise.content);
   const correctAnswerMap = resolveAnswersForExercise(
-    exerciseIndex,
-    exercise.content,
-    allExercisesContent,
+    exercise.title,
+    allLevelExercises,
     answerKey
   );
 
-  // Determine if we can render interactively
-  const isAnswerOnly = isAnswerOnlyExercise(exercise.content);
-  const canBeInteractive = parsed.hasQuestions && parsed.questions.length > 0 && correctAnswerMap !== null && !isAnswerOnly;
+  // Determine if we can render interactively.
+  // If we have both parsed questions AND a matching answer key, the exercise is interactive.
+  // The isAnswerOnlyExercise check is only a fallback for exercises without answer keys
+  // (A2/B1/C1 where content IS the answer key, not questions).
+  const canBeInteractive =
+    parsed.hasQuestions &&
+    parsed.questions.length > 0 &&
+    correctAnswerMap !== null &&
+    correctAnswerMap.size > 0;
 
   // Load saved answers
   const savedData = getExerciseAnswers(dayId, exerciseIndex);
@@ -190,13 +197,19 @@ function SingleExercise({
   ).length;
   const totalQuestions = canBeInteractive ? parsed.questions.length : 0;
 
-  // Fallback: render as static markdown
+  // Fallback: render as static markdown (for answer-only exercises without question text)
   if (!canBeInteractive) {
     return (
       <div className="mb-8">
         <h3 className="text-xl font-bold mb-4" style={{ color: 'var(--accent)' }}>
           {exercise.title}
         </h3>
+        <div
+          className="text-xs font-medium px-2.5 py-1 rounded-md mb-3 inline-block"
+          style={{ backgroundColor: 'var(--surface)', color: 'var(--text-secondary)', border: '1px solid var(--border-color)' }}
+        >
+          Answer Key — Review the answers and check your understanding
+        </div>
         <MarkdownRenderer content={exercise.content} />
       </div>
     );
@@ -216,7 +229,7 @@ function SingleExercise({
             </p>
           )}
         </div>
-        {submitted && (
+        {submitted && total > 0 && (
           <div
             className="flex items-center gap-2 px-3 py-1.5 rounded-full text-sm font-semibold shrink-0"
             style={{
@@ -314,11 +327,11 @@ function SingleExercise({
             </button>
             {/* Score summary */}
             <span className="text-sm ml-auto" style={{ color: 'var(--text-secondary)' }}>
-              {score >= total
+              {total > 0 && score >= total
                 ? 'Perfect score!'
-                : score / total >= 0.7
+                : total > 0 && score / total >= 0.7
                 ? 'Well done!'
-                : score / total >= 0.4
+                : total > 0 && score / total >= 0.4
                 ? 'Keep practicing!'
                 : 'Review the material and try again.'}
             </span>
