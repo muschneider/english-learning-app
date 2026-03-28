@@ -37,6 +37,8 @@ export function ExerciseRenderer({
   answerKey,
   allLevelExercises,
 }: ExerciseRendererProps) {
+  const totalExercises = exercises.length;
+  
   return (
     <div className="flex flex-col gap-8">
       {exercises.map((exercise, index) => (
@@ -45,6 +47,7 @@ export function ExerciseRenderer({
           dayId={dayId}
           exercise={exercise}
           exerciseIndex={index}
+          totalExercises={totalExercises}
           allLevelExercises={allLevelExercises}
           answerKey={answerKey}
         />
@@ -57,6 +60,7 @@ interface SingleExerciseProps {
   dayId: number;
   exercise: ContentSection;
   exerciseIndex: number;
+  totalExercises: number;
   allLevelExercises: ContentSection[];
   answerKey: string;
 }
@@ -65,6 +69,7 @@ function SingleExercise({
   dayId,
   exercise,
   exerciseIndex,
+  totalExercises,
   allLevelExercises,
   answerKey,
 }: SingleExerciseProps) {
@@ -73,6 +78,7 @@ function SingleExercise({
   const clearExerciseAnswers = useProgressStore((s) => s.clearExerciseAnswers);
   const saveExerciseScore = useProgressStore((s) => s.saveExerciseScore);
   const getDayExercisesSummary = useProgressStore((s) => s.getDayExercisesSummary);
+  const checkAndAutoCompleteDay = useProgressStore((s) => s.checkAndAutoCompleteDay);
 
   // Parse the exercise and resolve answers
   const parsed: ParsedExercise = parseExercise(exercise.title, exercise.content);
@@ -181,6 +187,9 @@ function SingleExercise({
     const dayScore = summary.totalScore - (savedData?.score || 0) + newScore;
     const dayTotal = summary.totalQuestions - (savedData?.total || 0) + newTotal;
     saveExerciseScore(dayId, dayScore, dayTotal);
+
+    // Auto-complete day if all exercises are done
+    checkAndAutoCompleteDay(dayId, totalExercises);
   };
 
   const handleRetry = () => {

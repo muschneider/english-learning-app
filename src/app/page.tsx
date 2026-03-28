@@ -1,8 +1,17 @@
 'use client';
 
+import { useSyncExternalStore } from 'react';
 import Link from 'next/link';
 import { useProgressStore } from '../store/progress';
 import { curriculum, course } from '../data';
+
+function useStoreRehydrated() {
+  return useSyncExternalStore(
+    () => useProgressStore.persist.hasHydrated,
+    () => useProgressStore.persist.hasHydrated(),
+    () => false
+  );
+}
 
 const phaseIcons: Record<string, string> = {
   Grammar: 'G',
@@ -18,15 +27,55 @@ const phaseColors: Record<string, string> = {
   'Practice & Review': '#f59e0b',
 };
 
+function LoadingDashboard() {
+  return (
+    <div className="mx-auto max-w-5xl px-4 py-6 sm:py-10">
+      <section className="mb-8 sm:mb-12">
+        <h1 className="text-3xl sm:text-4xl font-bold mb-2">
+          Your <span style={{ color: 'var(--accent)' }}>90-Day</span> English Journey
+        </h1>
+        <p className="text-base sm:text-lg mb-6" style={{ color: 'var(--text-secondary)' }}>
+          From A1 Beginner to C2 Proficiency — a structured path to English mastery.
+        </p>
+        <div
+          className="rounded-2xl p-6 sm:p-8 animate-pulse"
+          style={{ backgroundColor: 'var(--surface)', border: '1px solid var(--border-color)' }}
+        >
+          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-4">
+            <div>
+              <p className="text-sm font-medium mb-1" style={{ color: 'var(--text-secondary)' }}>
+                Overall Progress
+              </p>
+              <p className="text-4xl font-bold" style={{ color: 'var(--accent)' }}>
+                0%
+              </p>
+              <p className="text-sm mt-1" style={{ color: 'var(--text-secondary)' }}>
+                0 of 90 days completed
+              </p>
+            </div>
+          </div>
+          <div className="w-full h-3 rounded-full overflow-hidden" style={{ backgroundColor: 'var(--border-color)' }}>
+            <div className="h-full rounded-full" style={{ width: '0%', backgroundColor: 'var(--accent)' }} />
+          </div>
+        </div>
+      </section>
+    </div>
+  );
+}
+
 export default function Dashboard() {
+  const rehydrated = useStoreRehydrated();
   const completedDays = useProgressStore((s) => s.completedDays);
   const progressPercent = useProgressStore((s) => s.getProgressPercent());
   const completedCount = useProgressStore((s) => s.getCompletedCount());
   const nextDay = useProgressStore((s) => s.getNextIncompleteDay());
 
+  if (!rehydrated) {
+    return <LoadingDashboard />;
+  }
+
   return (
     <div className="mx-auto max-w-5xl px-4 py-6 sm:py-10">
-      {/* Hero */}
       <section className="mb-8 sm:mb-12">
         <h1 className="text-3xl sm:text-4xl font-bold mb-2">
           Your <span style={{ color: 'var(--accent)' }}>90-Day</span> English Journey
@@ -35,7 +84,6 @@ export default function Dashboard() {
           From A1 Beginner to C2 Proficiency — a structured path to English mastery.
         </p>
 
-        {/* Progress Card */}
         <div
           className="rounded-2xl p-6 sm:p-8"
           style={{ backgroundColor: 'var(--surface)', border: '1px solid var(--border-color)' }}
@@ -63,7 +111,6 @@ export default function Dashboard() {
               </svg>
             </Link>
           </div>
-          {/* Progress bar */}
           <div className="w-full h-3 rounded-full overflow-hidden" style={{ backgroundColor: 'var(--border-color)' }}>
             <div
               className="h-full rounded-full transition-all duration-700 ease-out"
@@ -73,7 +120,6 @@ export default function Dashboard() {
               }}
             />
           </div>
-          {/* Level markers */}
           <div className="flex mt-2 text-xs" style={{ color: 'var(--text-secondary)' }}>
             {course.levels.map((lvl) => (
               <div key={lvl.id} className="text-center" style={{ width: `${((lvl.dayEnd - lvl.dayStart + 1) / 90) * 100}%` }}>
@@ -84,7 +130,6 @@ export default function Dashboard() {
         </div>
       </section>
 
-      {/* Roadmap by Level */}
       {course.levels.map((level) => {
         const levelDays = curriculum.filter((d) => d.level === level.id);
         const levelCompleted = levelDays.filter((d) => completedDays.includes(d.day)).length;
@@ -112,7 +157,6 @@ export default function Dashboard() {
               </span>
             </div>
 
-            {/* Days grid */}
             <div className="grid grid-cols-5 sm:grid-cols-10 gap-2">
               {levelDays.map((dayPlan) => {
                 const isCompleted = completedDays.includes(dayPlan.day);
@@ -163,7 +207,6 @@ export default function Dashboard() {
         );
       })}
 
-      {/* Legend */}
       <div className="flex flex-wrap gap-4 mt-4 text-xs" style={{ color: 'var(--text-secondary)' }}>
         {Object.entries(phaseColors).map(([phase, color]) => (
           <div key={phase} className="flex items-center gap-1.5">

@@ -2,6 +2,7 @@
 
 import { use, useState } from 'react';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import { getDayContent, course } from '../../../data';
 import { useProgressStore } from '../../../store/progress';
 import { MarkdownRenderer } from '../../../components/MarkdownRenderer';
@@ -11,11 +12,10 @@ type Tab = 'grammar' | 'vocabulary' | 'reading' | 'dialogues' | 'exercises';
 
 export default function DayPage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = use(params);
+  const router = useRouter();
   const dayNum = parseInt(id, 10);
   const dayContent = getDayContent(dayNum);
   const completedDays = useProgressStore((s) => s.completedDays);
-  const completeDay = useProgressStore((s) => s.completeDay);
-  const uncompleteDay = useProgressStore((s) => s.uncompleteDay);
 
   const [activeTab, setActiveTab] = useState<Tab>('grammar');
 
@@ -93,48 +93,25 @@ export default function DayPage({ params }: { params: Promise<{ id: string }> })
   return (
     <div className="mx-auto max-w-4xl px-4 py-6 sm:py-8">
       {/* Header */}
-      <div className="flex items-start justify-between mb-6">
-        <div>
-          <div className="flex items-center gap-2 mb-2">
-            <Link href="/" className="text-sm hover:underline" style={{ color: 'var(--text-secondary)' }}>
-              Dashboard
-            </Link>
-            <span style={{ color: 'var(--text-secondary)' }}>/</span>
-            <span
-              className="text-sm font-medium px-2 py-0.5 rounded-md text-white"
-              style={{ backgroundColor: levelMeta?.color || 'var(--accent)' }}
-            >
-              {plan.level} — {plan.levelDescription}
-            </span>
-          </div>
-          <h1 className="text-2xl sm:text-3xl font-bold">
-            Day {dayNum}
-          </h1>
-          <p className="text-sm mt-1" style={{ color: 'var(--text-secondary)' }}>
-            {plan.phase} &middot; {plan.title}
-          </p>
+      <div className="mb-6">
+        <div className="flex items-center gap-2 mb-2">
+          <Link href="/" className="text-sm hover:underline" style={{ color: 'var(--text-secondary)' }}>
+            Dashboard
+          </Link>
+          <span style={{ color: 'var(--text-secondary)' }}>/</span>
+          <span
+            className="text-sm font-medium px-2 py-0.5 rounded-md text-white"
+            style={{ backgroundColor: levelMeta?.color || 'var(--accent)' }}
+          >
+            {plan.level} — {plan.levelDescription}
+          </span>
         </div>
-        <button
-          onClick={() => (isCompleted ? uncompleteDay(dayNum) : completeDay(dayNum))}
-          className={`flex items-center gap-2 px-4 py-2 rounded-xl font-medium text-sm transition-all ${
-            isCompleted ? 'text-white' : ''
-          }`}
-          style={{
-            backgroundColor: isCompleted ? '#22c55e' : 'var(--surface)',
-            border: isCompleted ? 'none' : '1px solid var(--border-color)',
-          }}
-        >
-          {isCompleted ? (
-            <>
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-5 h-5">
-                <path fillRule="evenodd" d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z" clipRule="evenodd" />
-              </svg>
-              Completed
-            </>
-          ) : (
-            'Mark Complete'
-          )}
-        </button>
+        <h1 className="text-2xl sm:text-3xl font-bold">
+          Day {dayNum}
+        </h1>
+        <p className="text-sm mt-1" style={{ color: 'var(--text-secondary)' }}>
+          {plan.phase} &middot; {plan.title}
+        </p>
       </div>
 
       {/* Tabs */}
@@ -192,18 +169,40 @@ export default function DayPage({ params }: { params: Promise<{ id: string }> })
           <div />
         )}
         {dayNum < 90 ? (
-          <Link
-            href={`/day/${dayNum + 1}`}
+          <button
+            onClick={() => {
+              useProgressStore.getState().completeDay(dayNum);
+              router.push(`/day/${dayNum + 1}`);
+            }}
             className="flex items-center gap-2 px-4 py-2 rounded-lg font-medium text-sm transition-colors"
-            style={{ backgroundColor: 'var(--surface)', border: '1px solid var(--border-color)' }}
+            style={{ backgroundColor: 'var(--accent)', color: '#fff' }}
           >
             Day {dayNum + 1}
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-4 h-4">
               <path fillRule="evenodd" d="M3 10a.75.75 0 01.75-.75h10.638L10.23 5.29a.75.75 0 111.04-1.08l5.5 5.25a.75.75 0 010 1.08l-5.5 5.25a.75.75 0 11-1.04-1.08l4.158-3.96H3.75A.75.75 0 013 10z" clipRule="evenodd" />
             </svg>
-          </Link>
+          </button>
         ) : (
           <div />
+        )}
+      </div>
+
+      {/* Completion Status */}
+      <div className="flex justify-center mt-8">
+        {isCompleted ? (
+          <div
+            className="flex items-center gap-2 px-6 py-3 rounded-xl font-medium text-sm text-white"
+            style={{ backgroundColor: '#22c55e' }}
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-5 h-5">
+              <path fillRule="evenodd" d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z" clipRule="evenodd" />
+            </svg>
+            Day Completed
+          </div>
+        ) : (
+          <p className="text-sm" style={{ color: 'var(--text-secondary)' }}>
+            Complete all exercises to finish this day
+          </p>
         )}
       </div>
     </div>

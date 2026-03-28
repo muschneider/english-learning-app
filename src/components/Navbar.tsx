@@ -1,9 +1,28 @@
 'use client';
 
+import { useSyncExternalStore } from 'react';
 import Link from 'next/link';
 import { useProgressStore } from '../store/progress';
 
+function useHydrated() {
+  return useSyncExternalStore(
+    () => () => {},
+    () => true,
+    () => false
+  );
+}
+
+function useStoreRehydrated() {
+  return useSyncExternalStore(
+    () => useProgressStore.persist.hasHydrated,
+    () => useProgressStore.persist.hasHydrated(),
+    () => false
+  );
+}
+
 export function Navbar() {
+  const hydrated = useHydrated();
+  const rehydrated = useStoreRehydrated();
   const darkMode = useProgressStore((s) => s.darkMode);
   const toggleDarkMode = useProgressStore((s) => s.toggleDarkMode);
   const progressPercent = useProgressStore((s) => s.getProgressPercent());
@@ -22,17 +41,18 @@ export function Navbar() {
         </Link>
 
         <div className="flex items-center gap-2 sm:gap-4">
-          {/* Progress pill */}
-          <div className="hidden sm:flex items-center gap-2 text-sm px-3 py-1 rounded-full"
-            style={{ backgroundColor: 'var(--surface)', color: 'var(--text-secondary)' }}>
-            <div className="w-16 h-1.5 rounded-full overflow-hidden" style={{ backgroundColor: 'var(--border-color)' }}>
-              <div
-                className="h-full rounded-full transition-all duration-500"
-                style={{ width: `${progressPercent}%`, backgroundColor: 'var(--accent)' }}
-              />
+          {hydrated && rehydrated && (
+            <div className="hidden sm:flex items-center gap-2 text-sm px-3 py-1 rounded-full"
+              style={{ backgroundColor: 'var(--surface)', color: 'var(--text-secondary)' }}>
+              <div className="w-16 h-1.5 rounded-full overflow-hidden" style={{ backgroundColor: 'var(--border-color)' }}>
+                <div
+                  className="h-full rounded-full transition-all duration-500"
+                  style={{ width: `${progressPercent}%`, backgroundColor: 'var(--accent)' }}
+                />
+              </div>
+              <span>{progressPercent}%</span>
             </div>
-            <span>{progressPercent}%</span>
-          </div>
+          )}
 
           <Link href="/" className="text-sm px-3 py-1.5 rounded-lg transition-colors hover:opacity-80"
             style={{ color: 'var(--text-secondary)' }}>

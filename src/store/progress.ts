@@ -45,6 +45,7 @@ interface ProgressState {
   getNextIncompleteDay: () => number;
   toggleDarkMode: () => void;
   resetProgress: () => void;
+  checkAndAutoCompleteDay: (day: number, totalExercises: number) => boolean;
 
   // Exercise answer persistence
   saveExerciseAnswers: (
@@ -127,6 +128,21 @@ export const useProgressStore = create<ProgressState>()(
           exerciseScores: [],
           exerciseAnswers: [],
         }),
+
+      checkAndAutoCompleteDay: (day: number, totalExercises: number) => {
+        const { exerciseAnswers, completedDays } = get();
+        const submittedCount = exerciseAnswers.filter(
+          (e) => e.key.startsWith(`${day}-`) && e.submitted
+        ).length;
+        if (submittedCount >= totalExercises && !completedDays.includes(day)) {
+          set((state) => ({
+            completedDays: [...state.completedDays, day].sort((a, b) => a - b),
+            currentDay: Math.max(state.currentDay, day + 1),
+          }));
+          return true;
+        }
+        return false;
+      },
 
       // Exercise answer persistence
       saveExerciseAnswers: (
