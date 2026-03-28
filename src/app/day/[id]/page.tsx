@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { getDayContent, course } from '../../../data';
 import { useProgressStore } from '../../../store/progress';
 import { MarkdownRenderer } from '../../../components/MarkdownRenderer';
+import { ExerciseRenderer } from '../../../components/ExerciseRenderer';
 
 type Tab = 'grammar' | 'vocabulary' | 'reading' | 'dialogues' | 'exercises';
 
@@ -17,7 +18,6 @@ export default function DayPage({ params }: { params: Promise<{ id: string }> })
   const uncompleteDay = useProgressStore((s) => s.uncompleteDay);
 
   const [activeTab, setActiveTab] = useState<Tab>('grammar');
-  const [showAnswerKey, setShowAnswerKey] = useState(false);
 
   if (!dayContent) {
     return (
@@ -78,38 +78,11 @@ export default function DayPage({ params }: { params: Promise<{ id: string }> })
         ));
       case 'exercises':
         return (
-          <>
-            {exercises.map((item, i) => (
-              <div key={i} className="mb-8">
-                <h3 className="text-xl font-bold mb-4" style={{ color: 'var(--accent)' }}>{item.title}</h3>
-                <MarkdownRenderer content={item.content} />
-              </div>
-            ))}
-            {answerKey && (
-              <div className="mt-6">
-                <button
-                  onClick={() => setShowAnswerKey(!showAnswerKey)}
-                  className="inline-flex items-center gap-2 px-4 py-2 rounded-lg font-medium text-sm transition-colors"
-                  style={{ backgroundColor: 'var(--surface)', border: '1px solid var(--border-color)' }}
-                >
-                  {showAnswerKey ? 'Hide' : 'Show'} Answer Key
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 20 20"
-                    fill="currentColor"
-                    className={`w-4 h-4 transition-transform ${showAnswerKey ? 'rotate-180' : ''}`}
-                  >
-                    <path fillRule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clipRule="evenodd" />
-                  </svg>
-                </button>
-                {showAnswerKey && (
-                  <div className="mt-4 p-4 rounded-xl" style={{ backgroundColor: 'var(--surface)', border: '1px solid var(--border-color)' }}>
-                    <MarkdownRenderer content={answerKey} />
-                  </div>
-                )}
-              </div>
-            )}
-          </>
+          <ExerciseRenderer
+            dayId={dayNum}
+            exercises={exercises}
+            answerKey={answerKey}
+          />
         );
       default:
         return <p style={{ color: 'var(--text-secondary)' }}>No content available for this section.</p>;

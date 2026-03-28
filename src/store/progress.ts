@@ -10,10 +10,29 @@ interface ExerciseScore {
   completedAt: string;
 }
 
+/** Stored answer for a single question within an exercise. */
+interface StoredAnswer {
+  values: string[];
+  checked: boolean;
+  correct?: boolean;
+}
+
+/** All user answers for a specific exercise on a specific day. */
+interface ExerciseAnswers {
+  /** Key format: "day-exerciseIndex" */
+  key: string;
+  answers: Record<number, StoredAnswer>;
+  submitted: boolean;
+  score: number;
+  total: number;
+  submittedAt?: string;
+}
+
 interface ProgressState {
   completedDays: number[];
   currentDay: number;
   exerciseScores: ExerciseScore[];
+  exerciseAnswers: ExerciseAnswers[];
   darkMode: boolean;
 
   completeDay: (day: number) => void;
@@ -26,6 +45,23 @@ interface ProgressState {
   getNextIncompleteDay: () => number;
   toggleDarkMode: () => void;
   resetProgress: () => void;
+
+  // Exercise answer persistence
+  saveExerciseAnswers: (
+    day: number,
+    exerciseIndex: number,
+    answers: Record<number, StoredAnswer>,
+    submitted: boolean,
+    score: number,
+    total: number
+  ) => void;
+  getExerciseAnswers: (day: number, exerciseIndex: number) => ExerciseAnswers | undefined;
+  clearExerciseAnswers: (day: number, exerciseIndex: number) => void;
+  getDayExercisesSummary: (day: number) => { totalScore: number; totalQuestions: number; exerciseCount: number };
+}
+
+function makeKey(day: number, exerciseIndex: number): string {
+  return `${day}-${exerciseIndex}`;
 }
 
 export const useProgressStore = create<ProgressState>()(
@@ -34,6 +70,7 @@ export const useProgressStore = create<ProgressState>()(
       completedDays: [],
       currentDay: 1,
       exerciseScores: [],
+      exerciseAnswers: [],
       darkMode: true,
 
       completeDay: (day: number) =>
@@ -88,7 +125,60 @@ export const useProgressStore = create<ProgressState>()(
           completedDays: [],
           currentDay: 1,
           exerciseScores: [],
+          exerciseAnswers: [],
         }),
+
+      // Exercise answer persistence
+      saveExerciseAnswers: (
+        day: number,
+        exerciseIndex: number,
+        answers: Record<number, StoredAnswer>,
+        submitted: boolean,
+        score: number,
+        total: number
+      ) =>
+        set((state) => {
+          const key = makeKey(day, exerciseIndex);
+          const entry: ExerciseAnswers = {
+            key,
+            answers,
+            submitted,
+            score,
+            total,
+            submittedAt: submitted ? new Date().toISOString() : undefined,
+          };
+          return {
+            exerciseAnswers: [
+              ...state.exerciseAnswers.filter((e) => e.key !== key),
+              entry,
+            ],
+          };
+        }),
+
+      getExerciseAnswers: (day: number, exerciseIndex: number) => {
+        const key = makeKey(day, exerciseIndex);
+        return get().exerciseAnswers.find((e) => e.key === key);
+      },
+
+      clearExerciseAnswers: (day: number, exerciseIndex: number) =>
+        set((state) => {
+          const key = makeKey(day, exerciseIndex);
+          return {
+            exerciseAnswers: state.exerciseAnswers.filter((e) => e.key !== key),
+          };
+        }),
+
+      getDayExercisesSummary: (day: number) => {
+        const { exerciseAnswers } = get();
+        const dayAnswers = exerciseAnswers.filter(
+          (e) => e.key.startsWith(`${day}-`) && e.submitted
+        );
+        return {
+          totalScore: dayAnswers.reduce((sum, e) => sum + e.score, 0),
+          totalQuestions: dayAnswers.reduce((sum, e) => sum + e.total, 0),
+          exerciseCount: dayAnswers.length,
+        };
+      },
     }),
     {
       name: 'english-learning-progress',
